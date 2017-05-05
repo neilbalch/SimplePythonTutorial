@@ -6,7 +6,7 @@ Assumes the user does not know anything about programming in python.
 
 * Supports the functions `+,-,*,/`
 
-Tutorial:
+[Tutorial](https://github.com/neilbalch/Python-Tutorial-Calculator/blob/master/Simple%20Calculator%20Tutorial.md)
 
 # Advanced Calculator
 
@@ -15,4 +15,4 @@ Tutorial:
 * Can recall constants `pi,e,tau`
 * Can convert `Degrees to Radians, Radians to Degrees`
 
-Tutorial:
+[Tutorial](https://github.com/neilbalch/Python-Tutorial-Calculator/blob/master/Advanced%20Calculator%20Tutorial.md)

@@ -3,16 +3,10 @@ import math
 import random
 # Define Variables
 output = 0
-process1 = ""
-processO = ""
-process2 = ""
+num1 = ""
+operator = ""
+num2 = ""
 memStore = "EMPTY"
-# Define Vars To Allow Program To Pass The Input Stage
-operationD = False
-process1D = False
-process2D = False
-need2 = True
-skipOp = False
 
 # Define Function Listing Function
 def abilitiesList():
@@ -44,162 +38,135 @@ def abilitiesList():
     print("randint...Returns A Random Number Between The Two Inputs")
     print("//////////////////////////////////////////////////////////////////////////")
 
+def askForInput(textPrompt):
+    num = input(textPrompt)
+    try:
+        # Try to typecast the input to a float
+        float(num)
+    except ValueError:
+        # Catch the exception if it is not a number
+        print("ERROR: Syn: Invalid Num")
+    else:
+        # Else, move on
+        # Typecasting
+        return float(num)
+
 # While Loop
-while(1):
+while(True):
     # Reset Variables
-    operationD = False
-    process1D = False
-    process2D = False
     print("//////////////////////////////////////////////////////////////////////////")
     print("Type 'help' for a list of abilities")
-    # Operation Input
-    while(operationD == False):
-        #print("Hello, What is your Operation (Operator)?")
-        processO = input("Hello, What is your Operation (Operator)? ")
-        # Is processO == to any of out constants or predefines?
-        if processO == "help":
+    # Loop for getting operation
+    while True:
+        operator = input("What operation do you want to perform? ")
+        # Is operator == to any of out constants or predefines?
+        if operator == "help":
             abilitiesList()
-            processO = ""
-            skipOp = True
-        elif processO == "pi":
+            operator = ""
+        elif operator == "pi":
             print(math.pi)
-            processO = ""
-            skipOp = True
-        elif processO == "e":
+            operator = ""
+        elif operator == "e":
             print(math.e)
-            processO = ""
-            skipOp = True
-        elif processO == "tau":
+            operator = ""
+        elif operator == "tau":
             print(math.pi*2)
-            processO = ""
-            skipOp = True
-        elif processO == "MR":
+            operator = ""
+        elif operator == "MR":
             print(str(memStore))
-            processO = ""
-            skipOp = True
-        elif processO == "M-":
+            operator = ""
+        elif operator == "M-":
             memStore = "Empty"
             print("Memory Cleared")
-            processO = ""
-            skipOp = True
-        elif processO == "M+":
-            process2 = "0"
-            operationD = True
-            skipOp = True
-        if processO=="rand":
+            operator = ""
+        elif operator == "M+":
+            num2 = "0"
+        elif operator == "rand":
             print(random.random())
-            skipOp = True
-        # Have We Given process1 a Valid Operator?
-        elif processO == "+" or processO== "-" or processO== "*" or processO== "/" or processO== "^" or processO=="/-" or processO=="!" or processO=="Abs" or processO=="d/r" or processO=="r/d" or processO=="M+" or processO=="M-" or processO=="MR" or processO=="sin" or processO=="cos" or processO=="tan" or processO=="asin" or processO=="acos" or processO=="atan" or processO=="log10" or processO=="log" or processO=="randint":
-            operationD = True    
-        elif skipOp == True:
-            processO = ""
+        # Has the user entered in a valid operator?
+        elif operator == "+" or operator == "-" or operator == "*" or operator == "/" or operator == "^" or operator == "/-" or operator == "!" or operator == "Abs" or operator == "d/r" or operator == "r/d" or operator == "M+" or operator == "M-" or operator == "MR" or operator == "sin" or operator == "cos" or operator == "tan" or operator == "asin" or operator == "acos" or operator == "atan" or operator == "log10" or operator == "log" or operator == "randint":
+            break
         else:
             print("ERROR: Invalid Operator")
-        # Do We Need A 2nd Input?
-        if processO=="/-" or processO=="!" or processO=="Abs" or processO=="d/r" or processO=="r/d" or processO=="M+" or processO=="sin" or processO=="cos" or processO=="tan" or processO=="asin" or processO=="acos" or processO=="atan" or processO=="log10":
-           need2 = False
+
+    # Loop for 1st number input
+    while True:
+        num1 = askForInput("First Number? ")
+        # Catch asin and acos out of bounds error case
+        if (operator == "asin" or operator == "acos") and (float(num1) > 1 or float(num1) < -1):
+                print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
         else:
-            need2 = True
-    # 1st Number Input
-    while(process1D == False):
-         #print("First Number?")
-         process1 = input("First Number? ")
-         try:
-             float(process1)
-         except ValueError:
-             print("ERROR: Syn: Invalid Num")
-         else:
-             if processO == "asin" or processO == "acos":
-                 if int(process1) > 1 or int(process1) < -1:
-                     print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
-                     process1D = False
-                 else:
-                     process1D = True
-             else:
-                 process1D = True
-    # 2nd Number Input
-    while(process2D == False):
-        if need2 == False:
-            process2 = "0"
-            process2D = True
-        else:
-            #print("Second Number?")
-            process2 = input("Second Number? ")
-            try:
-                float(process2)
-            except ValueError:
-                print("ERROR: Syn: Invalid Num")
+            break
+
+    # Does the operation require a 2nd input?
+    if not (operator=="/-" or operator=="!" or operator=="Abs" or operator=="d/r" or operator=="r/d" or operator=="M+" or operator=="sin" or operator=="cos" or operator=="tan" or operator=="asin" or operator=="acos" or operator=="atan" or operator=="log10"):
+        # Loop for 2nd number input
+        while True:
+            num2 = askForInput("Second Number? ")
+            # Catch x/0 error case
+            if  operator == "/" and num2 == "0":
+                    print("ERROR: Math: Canot divide by 0!")
             else:
-                 process2D = True
-    # x/0 Error
-    if processO == "/" and process2 == "0":
-        #Error
-        print("ERROR: Math: Canot divide by 0!")
-    else:
-        # Typecasting
-        intProcess1 = float(process1)
-        # Check if to Typecast intProcess2
-        if  need2 == True:
-            intProcess2 = float(process2)
-        # Strategic Processing
-        if processO == "+":
-            output=intProcess1+intProcess2
-            print("Your Answer: "+str(output))
-        if processO == "-":
-            output=intProcess1-intProcess2
-            print("Your Answer: "+str(output))
-        if processO == "*":
-            output=intProcess1*intProcess2
-            print("Your Answer: "+str(output))
-        if processO == "/":
-            output=intProcess1/intProcess2
-            print("Your Answer: "+str(output))
-        if processO == "^":
-            output=math.pow(intProcess1,intProcess2)
-            print("Your Answer: "+str(output))
-        if processO == "/-":
-            output=math.sqrt(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO == "!":
-            output=math.factorial(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO == "Abs":
-            output=math.fabs(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="d/r":
-            output=math.radians(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="r/d":
-            output=math.degrees(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="M+":
-            memStore = process1
-            print("Number Stored")
-        if processO=="sin":
-            output=math.sin(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="cos":
-            output=math.cos(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="tan":
-            output=math.tan(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="asin":
-            output=math.asin(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="acos":
-            output=math.acos(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="atan":
-            output=math.atan(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="log10":
-            output=math.log10(intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="log":
-            output=math.log(intProcess2, intProcess1)
-            print("Your Answer: "+str(output))
-        if processO=="randint":
-            output=random.randint(intProcess1, intProcess2)
-            print("Your Answer: "+str(output))
+                break
+
+    # Calculations
+    if operator == "+":
+        output = num1 + num2
+        print("Your Answer: "+str(output))
+    if operator == "-":
+        output = num1 - num2
+        print("Your Answer: "+str(output))
+    if operator == "*":
+        output = num1 * num2
+        print("Your Answer: "+str(output))
+    if operator == "/":
+        output = num1 / num2
+        print("Your Answer: "+str(output))
+    if operator == "^":
+        output = math.pow(num1,num2)
+        print("Your Answer: "+str(output))
+    if operator == "/-":
+        output = math.sqrt(num1)
+        print("Your Answer: "+str(output))
+    if operator == "!":
+        output = math.factorial(num1)
+        print("Your Answer: "+str(output))
+    if operator == "Abs":
+        output = math.fabs(num1)
+        print("Your Answer: "+str(output))
+    if operator == "d/r":
+        output = math.radians(num1)
+        print("Your Answer: "+str(output))
+    if operator == "r/d":
+        output = math.degrees(num1)
+        print("Your Answer: "+str(output))
+    if operator == "M+":
+        memStore = num1
+        print("Number Stored")
+    if operator == "sin":
+        output = math.sin(num1)
+        print("Your Answer: "+str(output))
+    if operator == "cos":
+        output = math.cos(num1)
+        print("Your Answer: "+str(output))
+    if operator == "tan":
+        output = math.tan(num1)
+        print("Your Answer: "+str(output))
+    if operator == "asin":
+        output = math.asin(num1)
+        print("Your Answer: "+str(output))
+    if operator == "acos":
+        output = math.acos(num1)
+        print("Your Answer: "+str(output))
+    if operator == "atan":
+        output = math.atan(num1)
+        print("Your Answer: "+str(output))
+    if operator == "log10":
+        output = math.log10(num1)
+        print("Your Answer: "+str(output))
+    if operator == "log":
+        output = math.log(num2, num1)
+        print("Your Answer: "+str(output))
+    if operator == "randint":
+        output = random.randint(num1, num2)
+        print("Your Answer: "+str(output))

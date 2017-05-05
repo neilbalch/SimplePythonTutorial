@@ -1,9 +1,12 @@
 # Python-Tutorial-Calculator
 Python Tutorial: Making a simple command line calculator
+Assumes the user does not know anything about programming in python.
 
 # Simple Calculator
 
-* Supports the functions '+,-,*,/'
+* Supports the functions `+,-,*,/`
+
+Tutorial:
 
 # Advanced Calculator
 
@@ -11,3 +14,5 @@ Python Tutorial: Making a simple command line calculator
 * Also has memory ability `M+,MR,M-`
 * Can recall constants `pi,e,tau`
 * Can convert `Degrees to Radians, Radians to Degrees`
+
+Tutorial:

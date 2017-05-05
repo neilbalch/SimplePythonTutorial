@@ -1,25 +1,21 @@
 output = 0
-process1 = ""
-processO = ""
-process2 = ""
-print("Hello, What is your First Number?")
-process1 = input()
-print("Operation?")
-processO = input()
-print("Your Second Number?")
-process2 = input()
-print("Processing...")
+num1 = ""
+operation = ""
+num2 = ""
+num1 = input("Hello, What is your First Number?\n")
+operation = input("Operation?\n")
+num2 = input("Your Second Number?\n")
 
-intProcess1 = int(process1)
-intProcess2 = int(process2)
+floatnum1 = float(num1)
+floatnum2 = float(num2)
 
-if processO == "+":
-    output=intProcess1+intProcess2
-if processO == "-":
-    output=intProcess1-intProcess2
-if processO == "*":
-    output=intProcess1*intProcess2
-if processO == "/":
-    output=intProcess1/intProcess2
+if operation == "+":
+    output=floatnum1+floatnum2
+if operation == "-":
+    output=floatnum1-floatnum2
+if operation == "*":
+    output=floatnum1*floatnum2
+if operation == "/":
+    output=floatnum1/floatnum2
 
 print("Your Answer: "+str(output))

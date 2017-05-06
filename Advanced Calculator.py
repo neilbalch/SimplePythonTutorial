@@ -6,7 +6,7 @@ output = 0
 num1 = ""
 operator = ""
 num2 = ""
-memStore = "EMPTY"
+memStore = "Empty"
 
 # Define Function Listing Function
 def abilitiesList():
@@ -47,7 +47,6 @@ def askForInput(textPrompt):
         # Catch the exception if it is not a number
         print("ERROR: Syn: Invalid Num")
     else:
-        # Else, move on
         # Typecasting
         return float(num)
 
@@ -62,25 +61,17 @@ while(True):
         # Is operator == to any of out constants or predefines?
         if operator == "help":
             abilitiesList()
-            operator = ""
         elif operator == "pi":
             print(math.pi)
-            operator = ""
         elif operator == "e":
             print(math.e)
-            operator = ""
         elif operator == "tau":
             print(math.pi*2)
-            operator = ""
         elif operator == "MR":
             print(str(memStore))
-            operator = ""
         elif operator == "M-":
             memStore = "Empty"
             print("Memory Cleared")
-            operator = ""
-        elif operator == "M+":
-            num2 = "0"
         elif operator == "rand":
             print(random.random())
         # Has the user entered in a valid operator?

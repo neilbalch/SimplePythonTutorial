@@ -1,4 +1,4 @@
-# Import 'math' Library
+# Import 'math' and 'random' Libraries
 import math
 import random
 # Define Variables
@@ -38,7 +38,7 @@ def abilitiesList():
     print("randint...Returns A Random Number Between The Two Inputs")
     print("//////////////////////////////////////////////////////////////////////////")
 
-def askForInput(textPrompt):
+def askForNumInput(textPrompt):
     num = input(textPrompt)
     try:
         # Try to typecast the input to a float
@@ -51,8 +51,7 @@ def askForInput(textPrompt):
         return float(num)
 
 # While Loop
-while(True):
-    # Reset Variables
+while True:
     print("//////////////////////////////////////////////////////////////////////////")
     print("Type 'help' for a list of abilities")
     # Loop for getting operation
@@ -82,10 +81,10 @@ while(True):
 
     # Loop for 1st number input
     while True:
-        num1 = askForInput("First Number? ")
+        num1 = askForNumInput("First Number? ")
         # Catch asin and acos out of bounds error case
         if (operator == "asin" or operator == "acos") and (float(num1) > 1 or float(num1) < -1):
-                print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
+            print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
         else:
             break
 
@@ -93,10 +92,10 @@ while(True):
     if not (operator=="/-" or operator=="!" or operator=="Abs" or operator=="d/r" or operator=="r/d" or operator=="M+" or operator=="sin" or operator=="cos" or operator=="tan" or operator=="asin" or operator=="acos" or operator=="atan" or operator=="log10"):
         # Loop for 2nd number input
         while True:
-            num2 = askForInput("Second Number? ")
+            num2 = askForNumInput("Second Number? ")
             # Catch x/0 error case
             if  operator == "/" and num2 == "0":
-                    print("ERROR: Math: Canot divide by 0!")
+                print("ERROR: Math: Canot divide by 0!")
             else:
                 break
 

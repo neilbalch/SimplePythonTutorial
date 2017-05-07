@@ -42,6 +42,10 @@ Repeat the following for the following three operations.
 
 Using the `print()` statement, we can print the result out to the screen. In Python, strings can be concatenated by "adding" them together, as if they were numbers. The code for this step looks like this: `print("Your Answer: "+str(output))`. This code prints the text "Your answer: " concatenated with the output, after it has been typecasted to a string. (You can't concatenate it while it is still formatted as a float)
 
+# Running the code
+
+Running the code is as simple as opening `IDLE`, the official Python editor for Windows, Mac and Linux, opening your code file, and pressing `F5` on your keyboard, or going to the `Run\Run Module` menu item at the top of the window (Windows), or the top of the screen (Mac)
+
 # Done!
 
 Amazing! You have made a simple command line based calculator! If you understood all of the code in this lesson, and you have gotten the code to compile, please continue onto the advanced tutorial.

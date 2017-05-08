@@ -6,7 +6,7 @@ In python, printing to the command line can be done using the `print()` statemen
 
 ## Intro to Input
 
-In python, user input on the command line can be taken by using the command `input()`. Putting in a string (optional) as a paramter will give the user a prompt after which they can input text. This statement returns a string with the text the user typed, so it needs to be assigneed to a variable. This can be done in python like so, `myvar = input("Feed me data! ")`. Python is not a language with strongly wyped variables, which means that you do not have to define a type when you create a variable. The interpreter will automatically assign the variable a type the first time it is instantiated with data.
+In python, user input on the command line can be taken by using the command `input()`. Putting in a string (optional) as a paramter will give the user a prompt after which they can input text. This statement returns a string with the text the user typed, so it needs to be assigneed to a variable. This can be done in python like so, `myvar = input("Feed me data! ")`. Python is not a language with strongly typed variables, which means that you do not have to define a type when you create a variable. The interpreter will automatically assign the variable a type the first time it is instantiated with data.
 
 ## Getting input from the user for a calculation
 

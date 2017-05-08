@@ -11,7 +11,8 @@ In python, user input on the command line can be taken by using the command `inp
 ## Getting input from the user for a calculation
 
 Querying input from the user for a calculation can be done like so, 
-```num1 = input("Hello, What is your First Number?\n")
+```py
+num1 = input("Hello, What is your First Number?\n")
 operation = input("Operation?\n")
 num2 = input("Your Second Number?\n")
 ```
@@ -20,7 +21,8 @@ This code will print a prompt asking for a first number to the screen, ask for i
 ## Typecasting the inputs
 
 In order for us to do math on the numbers that the user typed, we need to convert them to numerical values, as you cannot do math on strings, for obvious reasons. (After all, what is "abc" / "def" anyways?) The method for doing so  is called Typecasting. and in Python, you can convert to float (decimal numbers less than 7 digits) by using the float() statement. This can be done for our purposes like so,
-```floatnum1 = float(num1)
+```py
+floatnum1 = float(num1)
 floatnum2 = float(num2)
 ```
 > NOTE: We are not sanitizing our inputs, and entering in a non-numerical value here will break the code, and sanitizing inputs is really important, but a topic for a later time. For now, we will just hope that no one comes across this code with malicious intentions.
@@ -28,8 +30,9 @@ floatnum2 = float(num2)
 ## Performing the math
 
 Now that we have the numbers converted to float types, we are ready to do the math. For simplicity's sake in this lesson, we will use `if()` statements to tell what the user wants to do. In this program, we will support four operations, +,-,* and /, so we will need to have 4 if statements. One if statement for this program will look like, 
-```if operation == "+":
-    output=floatnum1+floatnum2
+```py
+if operation == "+":
+output=floatnum1+floatnum2
 ```
 This checks to see if the user wanted to add the two numbers, and if they did, it adds them together.
 > NOTE: Python is whitespace sensitive, so make sure you indent the second line with two spaces, or the if statement will not compile.

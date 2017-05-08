@@ -32,7 +32,7 @@ floatnum2 = float(num2)
 Now that we have the numbers converted to float types, we are ready to do the math. For simplicity's sake in this lesson, we will use `if()` statements to tell what the user wants to do. In this program, we will support four operations, +,-,* and /, so we will need to have 4 if statements. One if statement for this program will look like, 
 ```py
 if operation == "+":
-output=floatnum1+floatnum2
+  output=floatnum1+floatnum2
 ```
 This checks to see if the user wanted to add the two numbers, and if they did, it adds them together.
 > NOTE: Python is whitespace sensitive, so make sure you indent the second line with two spaces, or the if statement will not compile.

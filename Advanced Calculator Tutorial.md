@@ -24,7 +24,7 @@ Inside this function, we will use a new statement, the `try` block. It serves th
 
 As in the Simple Calculator, we will need to have the input typecasted to `float` for our math operations, and if you put in a non numerical value, the program will crash with a `ValueError: could not convert string to float`. We want to avoid that error, so with our try block, we will catch the error `ValueError`. If we catch the ValueError, we want to tell the user that their input was invalid, and if there was no error, we want to actually typecast the input. So, our finished function should look like this:
 
-```
+```py
 def askForNumInput(textPrompt):
     num = input(textPrompt)
     try:
@@ -42,7 +42,7 @@ def askForNumInput(textPrompt):
 
 Because our program will support a miryad different operations, we want the user to be able to recall a list of the operations we support. For the sake of neatness in the main block of code, we will break this out into a function. This one will be simple, it takes no parameters, as it is just a function with a bunch of print statements. The code for this should look like so:
 
-```
+```py
 # Define Function Listing Function
 def abilitiesList():
     print("+...Addition")
@@ -80,7 +80,7 @@ Since we want this program to loop indefinetly, letting the user perform as many
 
 At the beginning of the loop, we want to let the user know that they can request a list of the operations we can perform. We will write the code to call `abilitiesList()` later.
 
-```
+```py
 print("//////////////////////////////////////////////////////////////////////////")
 print("Type 'help' for a list of abilities")
 ```
@@ -91,7 +91,7 @@ Next, we will have three loops to get the operation and numerical inputs for the
 
 For the operation input loop, we will first see if the input is one of the commands that doesn't require any numerical inputs, like i.e. recalling pi or storing a value in the calculator's "memory", and if it isn't, then we will check to see if it is one of the operations we support that requires numerical input, i.e. +,-,sqrt, etc. Because we support recalling numerical constants and generating randon numbers, we need to import the libraries that allow us to use those commands. At the top of the file, add the following lines:
 
-```
+```py
 # Import 'math' and 'random' Libraries
 import math
 import random
@@ -99,7 +99,7 @@ import random
 
 We will call the `abilitesList` function like so: `abilitiesList()`. The 'memory' for the calculator will be implimented using the variable `memStore` that the user can store a value into using `M+`, recall a value from using `MR` and delete the contents of using `M-`. The `memStore` variable will be defined at the top of the file so that its scope includes the entire file, following convention, below the `import` statements. If the user inputs an operation that requires numerical input(s), we will break from the loop using the command `break`, which breaks away from the current loopm in this case the `while True:`. The finished operation loop should look like this:
 
-```
+```py
 # Loop for getting operation
     while True:
         operator = input("What operation do you want to perform? ")
@@ -136,7 +136,7 @@ Luckily, the only operations that require this level of finesse are `asin` and `
 
 Using the `and` keyword, we can combine the two conditions so that only if the first condition AND the second condition are both true we will proceed to tell the usr that there is an error. The `or` keyword works similarly, but instead of both conditions needing to be true for the entire compound condition to be true, only one needs to. Because we have four nested conditions here, between each of the sets, (around the `or`s) we need to have parentheses to tell the comiler what to evaluate first. (Very similar to how they work in PEMDAS for math!) Otherwise, if the values are kosher, we will break from the loop. The finished code for the first input should look like this:
 
-```
+```py
 # Loop for 1st number input
 while True:
     num1 = askForNumInput("First Number? ")
@@ -151,7 +151,7 @@ while True:
 
 The code for this input is extreemely simimar to the previous one. Just like the first input, we need to take input from the user using `askForumInput(textPrompt)` and check for if an error will surface with the given inputs. (this time for checking for divide by 0) But unlike the first input, where if you have gotten to to that point in the program, you automatically need a numerical input, some operations only require one numerical input, and not two, i.e. sqrt, factorial, abs, etc. So, instead of directly going to the loop, we need to check if the operation is one of the ones that only requires one numerical input. To do so, we will use another keyword, `not`. `not` inverts the boolean result from a condition, so for example, `not True` will never be true because the inverse of true is always false. Just like the condition for the first numerical input, parentheses are required around the condition to make sure that `not` modifies the correct part of the condition. The finished code for the second numerical input should look like this:
 
-```
+```py
 # Does the operation require a 2nd input?
 if not (operator=="/-" or operator=="!" or operator=="Abs" or operator=="d/r" or operator=="r/d" or operator=="M+" or operator=="sin" or operator=="cos" or operator=="tan" or operator=="asin" or operator=="acos" or operator=="atan" or operator=="log10"):
     # Loop for 2nd number input
@@ -174,7 +174,7 @@ For each of the operations we listed in `abilitiesList()` that was not one that 
 
 For the command `M+`, you will need to store the numerical value the user inputed to the variable `memStore`. The finished code for this section should look like this:
 
-```
+```py
 # Calculations
 if operator == "+":
     output = num1 + num2

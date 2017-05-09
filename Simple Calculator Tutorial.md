@@ -27,6 +27,16 @@ floatnum2 = float(num2)
 ```
 > NOTE: We are not sanitizing our inputs, and entering in a non-numerical value here will break the code, and sanitizing inputs is really important, but a topic for a later time. For now, we will just hope that no one comes across this code with malicious intentions.
 
+At this point, the code should look like this:
+```py
+num1 = input("Hello, What is your First Number?\n")
+operation = input("Operation?\n")
+num2 = input("Your Second Number?\n")
+
+floatnum1 = float(num1)
+floatnum2 = float(num2)
+```
+
 ## Performing the math
 
 Now that we have the numbers converted to float types, we are ready to do the math. For simplicity's sake in this lesson, we will use `if()` statements to tell what the user wants to do. In this program, we will support four operations, +,-,* and /, so we will need to have 4 if statements. One if statement for this program will look like, 
@@ -41,9 +51,52 @@ This checks to see if the user wanted to add the two numbers, and if they did, i
 
 Repeat the following for the following three operations.
 
+
+At this point, the code should look like this:
+```py
+num1 = input("Hello, What is your First Number?\n")
+operation = input("Operation?\n")
+num2 = input("Your Second Number?\n")
+
+floatnum1 = float(num1)
+floatnum2 = float(num2)
+
+if operation == "+":
+    output=floatnum1+floatnum2
+if operation == "-":
+    output=floatnum1-floatnum2
+if operation == "*":
+    output=floatnum1*floatnum2
+if operation == "/":
+    output=floatnum1/floatnum2
+
+```
+
 ## Printing the result
 
 Using the `print()` statement, we can print the result out to the screen. In Python, strings can be concatenated by "adding" them together, as if they were numbers. The code for this step looks like this: `print("Your Answer: "+str(output))`. This code prints the text "Your answer: " concatenated with the output, after it has been typecasted to a string. (You can't concatenate it while it is still formatted as a float)
+
+At this point, the code should look like this:
+```py
+num1 = input("Hello, What is your First Number?\n")
+operation = input("Operation?\n")
+num2 = input("Your Second Number?\n")
+
+floatnum1 = float(num1)
+floatnum2 = float(num2)
+
+if operation == "+":
+    output=floatnum1+floatnum2
+if operation == "-":
+    output=floatnum1-floatnum2
+if operation == "*":
+    output=floatnum1*floatnum2
+if operation == "/":
+    output=floatnum1/floatnum2
+
+print("Your Answer: "+str(output))
+```
+
 
 # Running the code
 

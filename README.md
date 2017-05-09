@@ -1,6 +1,5 @@
 # Python-Tutorial-Calculator
-Python Tutorial: Making a simple command line calculator
-Assumes the user does not know anything about programming in python.
+Python Tutorial: Making a simple command line calculator. *_Assumes no knowledge of programming in python._*
 
 ## Simple Calculator
 

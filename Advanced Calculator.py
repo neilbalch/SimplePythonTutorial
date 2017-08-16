@@ -39,16 +39,23 @@ def abilitiesList():
     print("//////////////////////////////////////////////////////////////////////////")
 
 def askForNumInput(textPrompt):
-    num = input(textPrompt)
-    try:
-        # Try to typecast the input to a float
-        float(num)
-    except ValueError:
-        # Catch the exception if it is not a number
-        print("ERROR: Syn: Invalid Num")
-    else:
-        # Typecasting
-        return float(num)
+    # Devine local variable
+    convertedNum = math.nan
+
+    # Wait for valid numerical input 
+    while True:
+        num = input(textPrompt)
+        try:
+            # Try to typecast the input to a float
+            float(num)
+        except ValueError:
+            # Catch the exception if it is not a number
+            print("ERROR: Syn: Invalid Num")
+        else:
+            # Typecasting
+            convertedNum = float(num)
+            break
+    return convertedNum
 
 # While Loop
 while True:
@@ -83,8 +90,10 @@ while True:
     while True:
         num1 = askForNumInput("First Number? ")
         # Catch asin and acos out of bounds error case
-        if (operator == "asin" or operator == "acos") and (float(num1) > 1 or float(num1) < -1):
+        if (operator == "asin" or operator == "acos") and (num1 > 1 or num1 < -1):
             print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
+        elif operator == "!" and num1 < 0:
+            print("ERROR: Math: Factorials only accept inputs > 0")
         else:
             break
 
@@ -103,60 +112,60 @@ while True:
     if operator == "+":
         output = num1 + num2
         print("Your Answer: "+str(output))
-    if operator == "-":
+    elif operator == "-":
         output = num1 - num2
         print("Your Answer: "+str(output))
-    if operator == "*":
+    elif operator == "*":
         output = num1 * num2
         print("Your Answer: "+str(output))
-    if operator == "/":
+    elif operator == "/":
         output = num1 / num2
         print("Your Answer: "+str(output))
-    if operator == "^":
+    elif operator == "^":
         output = math.pow(num1,num2)
         print("Your Answer: "+str(output))
-    if operator == "/-":
+    elif operator == "/-":
         output = math.sqrt(num1)
         print("Your Answer: "+str(output))
-    if operator == "!":
+    elif operator == "!":
         output = math.factorial(num1)
         print("Your Answer: "+str(output))
-    if operator == "Abs":
+    elif operator == "Abs":
         output = math.fabs(num1)
         print("Your Answer: "+str(output))
-    if operator == "d/r":
+    elif operator == "d/r":
         output = math.radians(num1)
         print("Your Answer: "+str(output))
-    if operator == "r/d":
+    elif operator == "r/d":
         output = math.degrees(num1)
         print("Your Answer: "+str(output))
-    if operator == "M+":
+    elif operator == "M+":
         memStore = num1
         print("Number Stored")
-    if operator == "sin":
+    elif operator == "sin":
         output = math.sin(num1)
         print("Your Answer: "+str(output))
-    if operator == "cos":
+    elif operator == "cos":
         output = math.cos(num1)
         print("Your Answer: "+str(output))
-    if operator == "tan":
+    elif operator == "tan":
         output = math.tan(num1)
         print("Your Answer: "+str(output))
-    if operator == "asin":
+    elif operator == "asin":
         output = math.asin(num1)
         print("Your Answer: "+str(output))
-    if operator == "acos":
+    elif operator == "acos":
         output = math.acos(num1)
         print("Your Answer: "+str(output))
-    if operator == "atan":
+    elif operator == "atan":
         output = math.atan(num1)
         print("Your Answer: "+str(output))
-    if operator == "log10":
+    elif operator == "log10":
         output = math.log10(num1)
         print("Your Answer: "+str(output))
-    if operator == "log":
+    elif operator == "log":
         output = math.log(num2, num1)
         print("Your Answer: "+str(output))
-    if operator == "randint":
+    elif operator == "randint":
         output = random.randint(num1, num2)
         print("Your Answer: "+str(output))

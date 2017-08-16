@@ -26,16 +26,23 @@ As in the Simple Calculator, we will need to have the input typecasted to `float
 
 ```py
 def askForNumInput(textPrompt):
-    num = input(textPrompt)
-    try:
-        # Try to typecast the input to a float
-        float(num)
-    except ValueError:
-        # Catch the exception if it is not a number
-        print("ERROR: Syn: Invalid Num")
-    else:
-        # Typecasting
-        return float(num)
+    # Devine local variable
+    convertedNum = math.nan
+
+    # Wait for valid numerical input 
+    while True:
+        num = input(textPrompt)
+        try:
+            # Try to typecast the input to a float
+            float(num)
+        except ValueError:
+            # Catch the exception if it is not a number
+            print("ERROR: Syn: Invalid Num")
+        else:
+            # Typecasting
+            convertedNum = float(num)
+            break
+    return convertedNum
 ```
 
 ## abilitiesList
@@ -132,7 +139,7 @@ If the user inputs an operation that is one of the ones we can perform without t
 
 Luckily, because we wrote the `askForNumInput(textPrompt)` function before, the code required to take input for the next two numerical inputs is a lot easier. We still need to have loops, because we still need to sanitize our inputs. Inside the loop, instead of calling the `input()` command ourselves, we will call `askForNumInput()`, which takes care of making sure the value is numerical for us, leaving us just to making sure the value is within the range of acceptable values for each operation. 
 
-Luckily, the only operations that require this level of finesse are `asin` and `acos`, as the functions provided by the `math` library only accept balues that are between 1 and -1. Since we need to check two conditions, that the requested operation is `asin` or `acos` AND that the values are within -1 and 1, we will use a compound condition. We could just make two nested if statements, jone for each of the conditions, but python allows us to make better and more concise code. 
+Luckily, the only operations that require this level of finesse are `asin`, `acos` and `!` (Factorial), as the first two functions provided by the `math` library only accept balues that are between 1 and -1, and factorial inputs have to be above 0. Since we need to check two conditions, that the requested operation is `asin` or `acos` AND that the values are within -1 and 1, we will use a compound condition. We could just make two nested if statements, jone for each of the conditions, but python allows us to make better and more concise code. The same can be done with the `!` test.
 
 Using the `and` keyword, we can combine the two conditions so that only if the first condition AND the second condition are both true we will proceed to tell the usr that there is an error. The `or` keyword works similarly, but instead of both conditions needing to be true for the entire compound condition to be true, only one needs to. Because we have four nested conditions here, between each of the sets, (around the `or`s) we need to have parentheses to tell the comiler what to evaluate first. (Very similar to how they work in PEMDAS for math!) Otherwise, if the values are kosher, we will break from the loop. The finished code for the first input should look like this:
 
@@ -141,10 +148,12 @@ Using the `and` keyword, we can combine the two conditions so that only if the f
 while True:
     num1 = askForNumInput("First Number? ")
     # Catch asin and acos out of bounds error case
-    if (operator == "asin" or operator == "acos") and (float(num1) > 1 or float(num1) < -1):
+    if (operator == "asin" or operator == "acos") and (num1 > 1 or num1 < -1):
         print("ERROR: Math: 'asin' and 'acos' commands only accept inputs in range -1 to +1")
+    elif operator == "!" and num1 < 0:
+        print("ERROR: Math: Factorials only accept inputs > 0")
     else:
-       break
+        break
 ```
 
 ### Second numerical input
@@ -179,61 +188,61 @@ For the command `M+`, you will need to store the numerical value the user inpute
 if operator == "+":
     output = num1 + num2
     print("Your Answer: "+str(output))
-if operator == "-":
+elif operator == "-":
     output = num1 - num2
     print("Your Answer: "+str(output))
-if operator == "*":
+elif operator == "*":
     output = num1 * num2
     print("Your Answer: "+str(output))
-if operator == "/":
+elif operator == "/":
     output = num1 / num2
     print("Your Answer: "+str(output))
-if operator == "^":
+elif operator == "^":
     output = math.pow(num1,num2)
     print("Your Answer: "+str(output))
-if operator == "/-":
+elif operator == "/-":
     output = math.sqrt(num1)
     print("Your Answer: "+str(output))
-if operator == "!":
+elif operator == "!":
     output = math.factorial(num1)
     print("Your Answer: "+str(output))
-if operator == "Abs":
+elif operator == "Abs":
     output = math.fabs(num1)
     print("Your Answer: "+str(output))
-if operator == "d/r":
+elif operator == "d/r":
     output = math.radians(num1)
     print("Your Answer: "+str(output))
-if operator == "r/d":
+elif operator == "r/d":
     output = math.degrees(num1)
     print("Your Answer: "+str(output))
-if operator == "M+":
+elif operator == "M+":
     memStore = num1
     print("Number Stored")
-if operator == "sin":
+elif operator == "sin":
     output = math.sin(num1)
     print("Your Answer: "+str(output))
-if operator == "cos":
+elif operator == "cos":
     output = math.cos(num1)
     print("Your Answer: "+str(output))
-if operator == "tan":
+elif operator == "tan":
     output = math.tan(num1)
     print("Your Answer: "+str(output))
-if operator == "asin":
+elif operator == "asin":
     output = math.asin(num1)
     print("Your Answer: "+str(output))
-if operator == "acos":
+elif operator == "acos":
     output = math.acos(num1)
     print("Your Answer: "+str(output))
-if operator == "atan":
+elif operator == "atan":
     output = math.atan(num1)
     print("Your Answer: "+str(output))
-if operator == "log10":
+elif operator == "log10":
     output = math.log10(num1)
     print("Your Answer: "+str(output))
-if operator == "log":
+elif operator == "log":
     output = math.log(num2, num1)
     print("Your Answer: "+str(output))
-if operator == "randint":
+elif operator == "randint":
     output = random.randint(num1, num2)
     print("Your Answer: "+str(output))
 ```

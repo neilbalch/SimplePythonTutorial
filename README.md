@@ -1,4 +1,4 @@
-# Python-Tutorial-Calculator
+# SimplePythonTutorial
 Python Tutorial: Making a simple command line calculator. *_Assumes no knowledge of programming in python._* I originally made the code for a 6th grade (2013) Math project in which I would be teaching the class how to write code in Python.
 
 ## Simple Calculator

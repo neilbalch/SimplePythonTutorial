@@ -7,7 +7,7 @@ I strongly reccomend you got through the tutorial for the [Simple Calculator](ht
 * This calculator is more advanced in that it includes some operations that require only one numberical input, like log and square root, as well as recalling constants, like pi and such that do not require any numerical input whatsoever. The program we build will have to deal with this, without crashing or bein vumbersome to use.
 * The aim is to get this calculator to support the following functions: `+,-,*,/,/-,^,!,abs,sin,cos,tan,asin,acos,atan,log10,log,rand,randint,pi,e,tau,M+,M-,MR,degrees->radians,radians->degrees`
 * The simple calculator program ended once the operation was completed, something we also want to avoid with this calculator.
-* Since it has a long list of functions, we also want to be able to lit out all of the things the calculator can do.
+* Since it has a long list of functions, we also want to be able to list out all of the things the calculator can do.
 * We want to sanitize our inputs so that we will not get screwed up by malicious or otherwiwe malformed inputs
 
 ## Sanitizing numerical inputs
